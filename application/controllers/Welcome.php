@@ -11,8 +11,12 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 
-		if ($this->input->post('submit')) {
-			$nmfile 						= time();
+		$this->form_validation->set_rules('title', 'Title', 'required');
+	    if ($this->form_validation->run() == FALSE) {
+			$data['foto'] = $this->db->order_by('id', 'desc')->limit(12)->get('foto')->result();
+			$this->load->view('index', $data);
+	    } else {
+	        $nmfile 						= url_title($this->input->post('title'), 'dash', TRUE).'-'.time();
 			$config['file_name'] 			= $nmfile;
             $config['upload_path']          = './uploads/';
             $config['allowed_types']        = 'gif|jpg|jpeg|png';
@@ -23,8 +27,7 @@ class Welcome extends CI_Controller {
 		          Gagal upload foto!
 		        </div>');
 				redirect(base_url());
-			}
-			else{
+			} else {
 				// KOMPRESS
 				$upload 	= $this->upload->data('file_name');
 				$config['image_library'] = 'gd2';
@@ -62,15 +65,14 @@ class Welcome extends CI_Controller {
 			    $this->image_lib->initialize($con);
 			    $this->image_lib->resize();
 
-				$this->db->insert('foto', array('foto' => $upload));
+				$this->db->insert('foto', array('title' => $this->input->post('title'), 'foto' => $upload));
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
 		          Upload foto berhasil!
 		        </div>');
 				redirect(base_url());
 			}
-		}
-		$data['foto'] = $this->db->order_by('id', 'desc')->limit(12)->get('foto')->result();
-		$this->load->view('index', $data);
+	    }
+			
 	}
 
 	public function detail($id)

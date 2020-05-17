@@ -24,6 +24,13 @@
 					<?= $this->session->flashdata('message'); ?>
 					<?php echo form_open_multipart(); ?>
 						<div class="form-group row">
+							<label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
+							<div class="col-sm-10">
+								<input type="text" name="title" class="form-control" id="inputTitle" placeholder="Title, Color, Size and Etc.">
+								<?php echo form_error('title', '<small class="text-danger">', '</small>'); ?>
+							</div>
+						</div>
+						<div class="form-group row">
 							<label for="inputFoto" class="col-sm-2 col-form-label">Foto</label>
 							<div class="col-sm-10">
 								<input type="file" name="foto" class="form-control form-control-file" id="inputFoto">
