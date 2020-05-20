@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/jquery.fancybox.min.css">
 		<link rel="icon" href="<?php echo base_url('uploads/ico.png'); ?>">
 		<style>
 			body{
@@ -23,6 +24,19 @@
 				<div class="card-body">
 					<?= $this->session->flashdata('message'); ?>
 					<?php echo form_open_multipart(); ?>
+						<div class="form-group row">
+							<label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
+							<div class="col-sm-10">
+								<div class="custom-control custom-radio">
+								  <input type="radio" id="customRadio1" name="wm" class="custom-control-input" value="wm.png" checked>
+								  <label class="custom-control-label" for="customRadio1">Gamis Muslimah Idn</label>
+								</div>
+								<div class="custom-control custom-radio">
+								  <input type="radio" id="customRadio2" name="wm" class="custom-control-input" value="wm2.png">
+								  <label class="custom-control-label" for="customRadio2">Dress Muslimah Idn</label>
+								</div>
+							</div>
+						</div>
 						<div class="form-group row">
 							<label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
 							<div class="col-sm-10">
@@ -59,10 +73,11 @@
 				<?php foreach ($foto as $f): ?>
 				<div class="col-lg-2 p-2">
 					<div class="card">
-						<img src="<?php echo base_url('uploads/'). $f->foto; ?>" class="card-img-top" style="width: 100%; height: 155px; object-fit: cover;">
+						<a href="<?php echo base_url('uploads/'). $f->foto; ?>" data-fancybox="images">
+							<img src="<?php echo base_url('thumbnails/'). $f->foto; ?>" class="card-img-top" style="width: 100%; height: 155px; object-fit: cover;">
+						</a>
 						<div class="card-body">
 							<div class="row justify-content-center">
-								<a href="<?php echo base_url('welcome/detail/'). $f->id; ?>" class="badge badge-pill badge-info">Detail</a>
 								<a href="<?php echo base_url('welcome/delete/'). $f->id; ?>" class="badge badge-pill badge-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
 							</div>
 						</div>
@@ -81,7 +96,8 @@
 
 		</div>
 		<!-- Optional JavaScript -->
-		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="<?php echo base_url(); ?>dist/js/jquery-3.5.1.min.js"></script>
+		<script src="<?php echo base_url(); ?>dist/js/jquery.fancybox.min.js"></script>
 		<script src="<?php echo base_url(); ?>dist/js/bootstrap.min.js"></script>
 	</body>
 </html>

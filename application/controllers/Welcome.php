@@ -10,13 +10,12 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-
 		$this->form_validation->set_rules('title', 'Title', 'required');
 	    if ($this->form_validation->run() == FALSE) {
 			$data['foto'] = $this->db->order_by('id', 'desc')->limit(12)->get('foto')->result();
 			$this->load->view('index', $data);
 	    } else {
-	        $nmfile 						= url_title($this->input->post('title'), 'dash', TRUE).'-'.time();
+	        $nmfile 						= time().'-'.url_title($this->input->post('title'), 'dash', TRUE);
 			$config['file_name'] 			= $nmfile;
             $config['upload_path']          = './uploads/';
             $config['allowed_types']        = 'gif|jpg|jpeg|png';
@@ -40,7 +39,7 @@ class Welcome extends CI_Controller {
 				// WATERMARK
 				if ($this->input->post('watermark') == 1) {
 			        $config['wm_type'] = 'overlay';
-			        $config['wm_overlay_path'] = './uploads/wm.png'; //the overlay image
+			        $config['wm_overlay_path'] = './uploads/'.$this->input->post('wm'); //the overlay image
 			        $config['wm_opacity'] = 50;
 			        $config['wm_vrt_alignment'] = 'middle';
 			        $config['wm_hor_alignment'] = 'center';
