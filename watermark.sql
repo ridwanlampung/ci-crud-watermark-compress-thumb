@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Bulan Mei 2020 pada 16.51
+-- Waktu pembuatan: 20 Bulan Mei 2020 pada 14.11
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -39,8 +39,11 @@ CREATE TABLE `foto` (
 --
 
 INSERT INTO `foto` (`id`, `title`, `foto`) VALUES
-(120, 'Maroon', 'maroon-1589899803.jpg'),
-(121, 'Bottle', 'bottle-1589899827.jpg');
+(148, 'All Color1', '1589957278-all-color1.jpg'),
+(149, 'Black', '1589957288-black.jpg'),
+(150, 'Bottle', '1589957300-bottle.jpg'),
+(151, 'Purple', '1589957311-purple.jpg'),
+(153, 'Navy', '1589976327-navy.jpg');
 
 --
 -- Indexes for dumped tables
@@ -60,7 +63,7 @@ ALTER TABLE `foto`
 -- AUTO_INCREMENT untuk tabel `foto`
 --
 ALTER TABLE `foto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

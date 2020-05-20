@@ -25,7 +25,7 @@
 					<?= $this->session->flashdata('message'); ?>
 					<?php echo form_open_multipart(); ?>
 						<div class="form-group row">
-							<label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
+							<label for="inputTitle" class="col-sm-2 col-form-label">Watermark For</label>
 							<div class="col-sm-10">
 								<div class="custom-control custom-radio">
 								  <input type="radio" id="customRadio1" name="wm" class="custom-control-input" value="wm.png" checked>

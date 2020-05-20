@@ -73,12 +73,8 @@ class Welcome extends CI_Controller {
 	    }
 			
 	}
+	
 
-	public function detail($id)
-	{
-		$data['foto'] = $this->db->get_where('foto', array('id' => $id))->row();
-		$this->load->view('detail', $data);
-	}
 	public function delete($id)
 	{
 		$data = $this->db->get_where('foto', array('id' => $id))->row();
@@ -91,6 +87,8 @@ class Welcome extends CI_Controller {
         </div>');
 		redirect(base_url());
 	}
+
+
 	public function delete_all()
 	{
 		$data = $this->db->get('foto')->result();
